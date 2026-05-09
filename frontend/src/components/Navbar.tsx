@@ -44,7 +44,7 @@ export function Navbar() {
             <Film size={20} className="text-red-500" />
           </motion.div>
 
-          <span className="hidden xs:block">CineScope</span>
+          <span className="hidden sm:block">CineScope</span>
         </Link>
 
         {/* Nav Links */}

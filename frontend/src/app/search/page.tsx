@@ -20,8 +20,8 @@ export default function SearchPage() {
   const [allLangs,  setAllLangs]  = useState<string[]>([]);
 
   useEffect(() => {
-    api.genres(50).then(gs => setAllGenres(gs.map((g:any) => g.genre)));
-    api.languages(30).then(ls => setAllLangs(ls.map((l:any) => l.language)));
+    api.genres().then(gs => setAllGenres(gs.map((g:any) => g.genre)));
+    api.languages().then(ls => setAllLangs(ls.map((l:any) => l.language)));
     doSearch(1);
   }, []);
 

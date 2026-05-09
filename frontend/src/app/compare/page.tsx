@@ -183,8 +183,10 @@ export default function ComparePage() {
               ].map(({ label, key, fmt }) => (
                 <tr key={label} className="border-b border-zinc-800/50 hover:bg-zinc-800/30">
                   <td className="p-4 text-zinc-400 font-medium">{label}</td>
-                  {active.map(m => (
-                    <td key={m.Title} className="p-4 text-white">{fmt((m as any)[key])}</td>
+                  {active.map((m: any) => (
+                    <td key={m.Title} className="p-4 text-white">
+                      {fmt(m[key as keyof typeof m] as never)}
+                    </td>
                   ))}
                 </tr>
               ))}

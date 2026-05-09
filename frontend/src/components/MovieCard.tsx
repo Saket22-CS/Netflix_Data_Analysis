@@ -1,15 +1,15 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Movie } from "@/lib/api";
 import { Star, Flame, Calendar } from "lucide-react";
 import Link from "next/link";
 
 // ── Reusable variants ──────────────────────────────────────────────────────
-export const cardVariants = {
+export const cardVariants: Variants = {
   hidden:  { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.05, duration: 0.35, ease: "easeOut" },
+    transition: { delay: i * 0.05, duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
   }),
 };
 

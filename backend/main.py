@@ -64,9 +64,17 @@ async def lifespan(app: FastAPI):
     load_data(); yield
 
 app = FastAPI(title="CineScope API", version="2.0", lifespan=lifespan)
-app.add_middleware(CORSMiddleware,
-    allow_origins=["http://localhost:3000"], allow_credentials=True,
-    allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        os.getenv("FRONTEND_URL", ""),   # set this on Render after Vercel deploys
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def sv(v):
     if pd.isna(v) or v is None: return None

@@ -25,8 +25,13 @@ def build_features(df):
         df[["Popularity","Vote_Count","Vote_Average"]].fillna(0).values.astype(np.float32))
     return np.hstack([gm * 2, nm])
 
+import os
+
 def load_data():
-    df = pd.read_csv("../dataset/mymoviedb.csv", lineterminator="\n")
+    # Works both locally and on Render
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path  = os.path.join(base_dir, "..", "dataset", "mymoviedb.csv")
+    df = pd.read_csv(csv_path, lineterminator="\n")
     df["Release_Date"]      = pd.to_datetime(df["Release_Date"], errors="coerce")
     df["Year"]              = df["Release_Date"].dt.year.astype("Int64")
     df["Month"]             = df["Release_Date"].dt.month

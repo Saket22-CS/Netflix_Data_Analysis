@@ -360,3 +360,12 @@ body::before {
 .fade-up {
   animation: fadeUp 0.5s ease forwards;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
